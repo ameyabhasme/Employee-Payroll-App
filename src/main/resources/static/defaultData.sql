@@ -1,0 +1,7 @@
+'{"id" : "1", "name":"Ameya","tech":"Java","salary":"400000"}'
+'{"id" : "2", "name":"Ashwin","tech":"PHP","salary":"400000"}'
+'{"id" : "3", "name":"Amruta","tech":"ML","salary":"400000"}'
+'{"id" : "4", "name":"Deepak","tech":"Java","salary":"400000"}'
+'{"id" : "5", "name":"Ritvija","tech":"Java","salary":"400000"}'
+'{"id" : "6", "name":"Sahil","tech":"Marketing","salary":"400000"}'
+'{"id" : "7", "name":"Priya","tech":"Python","salary":"400000"}'
