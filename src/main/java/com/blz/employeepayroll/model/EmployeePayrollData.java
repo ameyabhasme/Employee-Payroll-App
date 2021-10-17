@@ -1,56 +1,55 @@
 package com.blz.employeepayroll.model;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 import com.blz.employeepayroll.dto.EmployeeDTO;
 
-public class EmployeePayrollData {
-	
+import lombok.Data;
+
+@Entity
+@Table(name = "employee_payroll")
+public @Data class EmployeePayrollData {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-	private String tech;
 	private long salary;
+	private String gender;
+	private LocalDate startDate;
+	private String note;
+	private String profilePic;
 	
-	public EmployeePayrollData(int id, EmployeeDTO employeeDTO) {
-		this.id = id;
+	@ElementCollection
+	@CollectionTable(name = "employee_department", joinColumns = @JoinColumn (name = "dep_id"))
+	@Column(name = "department")
+	private List<String> departments;
+	
+	public EmployeePayrollData() {}
+
+	public EmployeePayrollData(EmployeeDTO employeeDTO) {
+		this.updateEmployeePayrollData(employeeDTO);
+	}
+
+	public void updateEmployeePayrollData(EmployeeDTO employeeDTO) {
 		this.name = employeeDTO.name;
-		this.tech = employeeDTO.tech;
 		this.salary = employeeDTO.salary;
+		this.gender = employeeDTO.gender;
+		this.startDate = employeeDTO.startDate;
+		this.note = employeeDTO.note;
+		this.profilePic = employeeDTO.profilePic;
+		this.departments = employeeDTO.departments;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getTech() {
-		return tech;
-	}
-
-	public long getSalary() {
-		return salary;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setTech(String tech) {
-		this.tech = tech;
-	}
-
-	public void setSalary(long salary) {
-		this.salary = salary;
-	}
-	
-	
 }
