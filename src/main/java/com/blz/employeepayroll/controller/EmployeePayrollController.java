@@ -54,6 +54,11 @@ public class EmployeePayrollController {
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 	
+	/**
+	 * GET API to get employees by the department
+	 * @param department
+	 * @return
+	 */
 	@GetMapping("/department/{department}")
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable ("department") String department){
 		List<EmployeePayrollData> empDataList = null;
