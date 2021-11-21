@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.blz.employeepayroll.dto.ResponseDTO;
 import com.blz.employeepayroll.model.EmployeePayrollData;
 import com.blz.employeepayroll.service.IEmployeePayrollService;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/payroll")
 public class EmployeePayrollController {
@@ -33,6 +35,7 @@ public class EmployeePayrollController {
 	 * 
 	 * @return empDataList List of entries
 	 */
+	@CrossOrigin(origins = "http://localhost:4200/")
 	@RequestMapping(value = { " ", "/", "/get" })
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
 		List<EmployeePayrollData> empDataList = null;
@@ -46,6 +49,7 @@ public class EmployeePayrollController {
 	 * @param id
 	 * @return entry by id
 	 */
+//	@CrossOrigin(origins = "http://localhost:4200/")
 	@GetMapping("/get/{id}")
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable int id) {
 		EmployeePayrollData empData = null;
@@ -59,6 +63,7 @@ public class EmployeePayrollController {
 	 * @param department
 	 * @return
 	 */
+//	@CrossOrigin(origins = "http://localhost:4200/")
 	@GetMapping("/department/{department}")
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable ("department") String department){
 		List<EmployeePayrollData> empDataList = null;
@@ -72,6 +77,7 @@ public class EmployeePayrollController {
 	 * @param employeeDTO
 	 * @return
 	 */
+	@CrossOrigin(origins = "http://localhost:4200/")
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addEmployeePayrolllData(@Valid @RequestBody EmployeeDTO employeeDTO) {
 		EmployeePayrollData empData = null;
@@ -86,6 +92,7 @@ public class EmployeePayrollController {
 	 * @param employeeDTO
 	 * @return
 	 */
+//	@CrossOrigin(origins = "http://localhost:4200/")
 	@PutMapping("/update/{id}")
 	public ResponseEntity<ResponseDTO> updateEmployeePayrolllData(@Valid @PathVariable("id") int id,
 			@RequestBody EmployeeDTO employeeDTO) {
@@ -101,6 +108,7 @@ public class EmployeePayrollController {
 	 * @param id
 	 * @return
 	 */
+	@CrossOrigin(origins = "http://localhost:4200/")
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<ResponseDTO> deleteEmployeePayrolllData(@PathVariable("id") int id) {
 		employeePayollService.deleteEmployeePayrollData(id);
